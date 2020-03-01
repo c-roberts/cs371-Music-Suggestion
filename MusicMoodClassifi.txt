@@ -1,0 +1,49 @@
+(in-microtheory CS371-MusicMoodClassification)
+
+;; backward-chaining 
+(<== (songMood ?song happy)
+     (songTempo ?song high)
+     (songPitch ?song high)
+     (songEngergy ?song medium))
+
+
+(<== (songMood ?song exuberant)
+     (songTempo ?song high)
+     (songPitch ?song high)
+     (songEngergy ?song high))
+
+
+(<== (songMood ?song energetic)
+     (songTempo ?song high)
+     (songPitch ?song medium)
+     (songEngergy ?song high))
+
+
+(<== (songMood ?song frantic)
+     (songTempo ?song high)
+     (songPitch ?song low)
+     (songEngergy ?song high))
+
+
+(<== (songMood ?song anxious)
+     (songTempo ?song low)
+     (songPitch ?song low)
+     (songEngergy ?song medium))
+
+
+(<== (songMood ?song depressed)
+     (songTempo ?song low)
+     (songPitch ?song low)
+     (songEngergy ?song low))
+
+
+(<== (songMood ?song calm)
+     (songTempo ?song low)
+     (songPitch ?song medium)
+     (songEngergy ?song low))
+
+
+(<== (songMood ?song content)
+     (songTempo ?song low)
+     (songPitch ?song high)
+     (songEngergy ?song low))
