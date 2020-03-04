@@ -1,14 +1,19 @@
 from sys import exit
 from pprint import pprint
+from os import path
+from pickle import dump as pdump
+from pickle import load as pload	
 
 from bs4 import BeautifulSoup
 from requests import get as getHTML
 
 from re import sub as regexReplace
-from math import floor
+from re import match as regexMatch
 
 dataBaseSiteBaseURL = "https://www.music4dance.net/song"
+dataBaseSiteHTMLDumpPath = "site_HTML.pickle"
 
+# In expected order
 expectedColumns = ['Like/Play',
                    'Song Title',
                    'Artist',
@@ -21,19 +26,25 @@ expectedColumns = ['Like/Play',
                    'Modified'
                   ]
 
-
-# Make HTTP request
-try:
-    dataBaseSiteResponse = getHTML(dataBaseSiteBaseURL)
-except:
-    print("!! Error: Retrieving Music 4 Dance website unsuccessfull.")
-    exit(0)
+if path.exists(dataBaseSiteHTMLDumpPath):
+    print("## Status: Found cached copy of Music 4 Dance website.")
+    dataBaseSiteHTML = pload(open(dataBaseSiteHTMLDumpPath, "rb"))
 else:
-    print("## Status: Retrieved Music 4 Dance website.")
+    # Make HTTP request
+    try:
+        dataBaseSiteHTML = getHTML(dataBaseSiteBaseURL).text
+    except:
+        print("!! Error: Retrieving Music 4 Dance website unsuccessfull.")
+        exit(0)
+    else:
+        print("## Status: Retrieved Music 4 Dance website.")
 
+    # Save for later
+    pdump(dataBaseSiteHTML, open(dataBaseSiteHTMLDumpPath, "wb"))
+    print("## Status: Cached copy of Music 4 Dance website for later.")
 
 # Parse HTML 
-dataBaseSiteSoup = BeautifulSoup(dataBaseSiteResponse.text,
+dataBaseSiteSoup = BeautifulSoup(dataBaseSiteHTML,
                                  features="html.parser"
                                 )
 
@@ -42,7 +53,7 @@ def getPageTable(pageSoup):
     return pageSoup.body.find('div', class_='body-content').find('table')
 
 def getSongRows(pageTable):
-    return [row for row in pageTable.find_all('tr')]
+    return [row for row in pageTable.find_all('tr')[1:]]
 
 pageSongTable = getPageTable(dataBaseSiteSoup)
 songRows = getSongRows(pageSongTable)
@@ -60,49 +71,86 @@ def sanitizeColumnTitle(raw_title):
     title = title.strip()
     return title
 
-def getColumnIndices(pageTable):
-    indices = {}
-    index = 0
+def checkColumnLabels(pageTable):
+    foundColTitles = []
     for colLabel in pageTable.thead.tr.find_all('th'):
         if 'title' in colLabel.attrs:
-            indices[
-                    sanitizeColumnTitle(colLabel.attrs['title'])
-                   ] = index
+            foundColTitles.append(sanitizeColumnTitle(colLabel.attrs['title']))
         else:
             title_text = sanitizeColumnTitle(colLabel.text)
             if title_text != '':
-                indices[title_text] = index
+                foundColTitles.append(title_text)
             else:
-                sub_index = 0
                 for img in colLabel.find_all('img'):
-                    indices[sanitizeColumnTitle(img.attrs['title'])] \
-                        = index + sub_index/10
-                    sub_index += 1
-        index += 1
-    return indices
-
-def checkColumnLabels(colIndicesDict):
+                    foundColTitles.append(sanitizeColumnTitle(img.attrs['title']))
     missing = []
-    for label in expectedColumns:
-        if label not in colIndicesDict:
-            missing.append(label)
+    for colIndex in range(len(expectedColumns)):
+        if expectedColumns[colIndex] != foundColTitles[colIndex]:
+            missing.append(expectedColumns[colIndex])
+               
     if len(missing):
         print("!! Error: Website table is missing the following expected labels:", missing)
         print("!!        Please update the data collection program to the new website format.")
+        print("!!        Note that the expected label list must be correctly ordered.")
         exit(0)
     else:
-        print("## Status: Found all expected website table columns.")
+        print("## Status: Found all expected website table column labels in expected order.")
 
-colIndicesByLabel = getColumnIndices(pageSongTable)
-checkColumnLabels(colIndicesByLabel)
+checkColumnLabels(pageSongTable)
 
-# Accessing song table elements
-def songAttrByIdx(songRow, index):
-    el = songRow.find_all('td')[floor(index)]
-    if (index % 1) == 0:
-        return el.a.text
-    else:
-        # loop through sub_index
+def songTitle(songRow):
+    return songRow.find_all('td')[1].a.text
 
-print(songAttrByIdx(songRows[3], 2))
+def songArtist(songRow):
+    return songRow.find_all('td')[2].a.text
 
+def songTempo(songRow):
+    return int(songRow.find_all('td')[3].a.text)
+
+def songBeatStrength(songRow):
+    return float(regexMatch("This song has a beat strength of (\d{1,2}\.\d{1,2})",
+                            songRow.find_all('td')[4]
+                                   .find_all('a')[0]
+                                   .img.attrs['title']
+                           ).group(1)
+                )
+
+def songEnergy(songRow):
+    return float(regexMatch("This song has an energy level of (\d{1,2}\.\d{1,2})",
+                            songRow.find_all('td')[4]
+                                   .find_all('a')[1]
+                                   .img.attrs['title']
+                           ).group(1)
+                )
+
+def songMood(songRow):
+    return float(regexMatch("This song has a mood level of (\d{1,2}\.\d{1,2})",
+                            songRow.find_all('td')[4]
+                                   .find_all('a')[2]
+                                   .img.attrs['title']
+                           ).group(1)
+                )
+
+def songDanceStyles(songRow):
+    styles = []
+    for a in songRow.find_all('td')[5].select("a[data-dance-name]"):
+        if a.attrs['data-dance-name']:
+            styles.append(a.attrs['data-dance-name'])
+    return styles
+
+def songTags(songRow):
+    tags = []
+    for a in songRow.find_all('td')[6].select("a[data-tag-value]"):
+        if a.attrs['data-tag-value']:
+            tags.append(a.attrs['data-tag-value'])
+    return tags
+
+print(songTitle(songRows[0]))
+print(songArtist(songRows[0]))
+print(songTempo(songRows[0]))
+print(songBeatStrength(songRows[0]))
+print(songEnergy(songRows[0]))
+print(songMood(songRows[0]))
+print(songDanceStyles(songRows[0]))
+print(songDanceStyles(songRows[-5]))
+print(songTags(songRows[1]))
