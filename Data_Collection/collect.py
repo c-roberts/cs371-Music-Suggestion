@@ -24,10 +24,11 @@ def getSongs():
                                                        dataBaseSiteHTMLDumpPath
                                                       )
 
-    # Parse HTML 
+    # Parse HTML
     dataBaseSiteSoup = BeautifulSoup(dataBaseSiteHTML,
                                      features="html.parser"
                                     )
+    print("## Status: Parsed HTML into internal representation.")
 
     # Get songs
     return scraper.getSongs(dataBaseSiteSoup, expectedColumns)

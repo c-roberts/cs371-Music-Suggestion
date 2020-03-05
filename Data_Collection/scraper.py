@@ -146,6 +146,7 @@ def getSongs(dataBaseSiteSoup, expectedColumns):
             "dances":   songDanceStyles(s),
             "tags":     songTags(s)
         })
+    print("## Status: Successfully parsed", len(songs), "songs.")
     return songs
 
     
