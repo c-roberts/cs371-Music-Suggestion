@@ -1,64 +1,14 @@
 from sys import exit
-from pprint import pprint
-from os import path
-from pickle import dump as pdump
-from pickle import load as pload	
-
-from bs4 import BeautifulSoup
-from requests import get as getHTML
 
 from re import sub as regexReplace
 from re import match as regexMatch
 
-dataBaseSiteBaseURL = "https://www.music4dance.net/song"
-dataBaseSiteHTMLDumpPath = "site_HTML.pickle"
-
-# In expected order
-expectedColumns = ['Like/Play',
-                   'Song Title',
-                   'Artist',
-                   'Tempo (in Beats Per Minute)',
-                   'Strength of the beat',
-                   'Energy of the song',
-                   'Mood of the song',
-                   'Dance Style Tags',
-                   'Tags',
-                   'Modified'
-                  ]
-
-if path.exists(dataBaseSiteHTMLDumpPath):
-    print("## Status: Found cached copy of Music 4 Dance website.")
-    dataBaseSiteHTML = pload(open(dataBaseSiteHTMLDumpPath, "rb"))
-else:
-    # Make HTTP request
-    try:
-        dataBaseSiteHTML = getHTML(dataBaseSiteBaseURL).text
-    except:
-        print("!! Error: Retrieving Music 4 Dance website unsuccessfull.")
-        exit(0)
-    else:
-        print("## Status: Retrieved Music 4 Dance website.")
-
-    # Save for later
-    pdump(dataBaseSiteHTML, open(dataBaseSiteHTMLDumpPath, "wb"))
-    print("## Status: Cached copy of Music 4 Dance website for later.")
-
-# Parse HTML 
-dataBaseSiteSoup = BeautifulSoup(dataBaseSiteHTML,
-                                 features="html.parser"
-                                )
-
-# Get song table
 def getPageTable(pageSoup):
     return pageSoup.body.find('div', class_='body-content').find('table')
 
 def getSongRows(pageTable):
     return [row for row in pageTable.find_all('tr')[1:]]
 
-pageSongTable = getPageTable(dataBaseSiteSoup)
-songRows = getSongRows(pageSongTable)
-
-# Parse table columns
 def sanitizeColumnTitle(raw_title):
     title = raw_title.strip()
     title = title.split(':')[0]
@@ -71,7 +21,7 @@ def sanitizeColumnTitle(raw_title):
     title = title.strip()
     return title
 
-def checkColumnLabels(pageTable):
+def checkColumnLabels(pageTable, expectedColumns):
     foundColTitles = []
     for colLabel in pageTable.thead.tr.find_all('th'):
         if 'title' in colLabel.attrs:
@@ -95,8 +45,6 @@ def checkColumnLabels(pageTable):
         exit(0)
     else:
         print("## Status: Found all expected website table column labels in expected order.")
-
-checkColumnLabels(pageSongTable)
 
 def songTitle(songRow):
     return songRow.find_all('td')[1].a.text
@@ -145,12 +93,3 @@ def songTags(songRow):
             tags.append(a.attrs['data-tag-value'])
     return tags
 
-print(songTitle(songRows[0]))
-print(songArtist(songRows[0]))
-print(songTempo(songRows[0]))
-print(songBeatStrength(songRows[0]))
-print(songEnergy(songRows[0]))
-print(songMood(songRows[0]))
-print(songDanceStyles(songRows[0]))
-print(songDanceStyles(songRows[-5]))
-print(songTags(songRows[1]))

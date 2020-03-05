@@ -1,6 +1,6 @@
 run:
-	pipenv3 run python3 ./main.py
+	pipenv3 run python3 ./collect.py
 
 int:
-	pipenv3 run python3 -i ./main.py
+	pipenv3 run python3 -i ./collect.py
 
