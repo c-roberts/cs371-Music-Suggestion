@@ -3,6 +3,9 @@ from sys import exit
 from re import sub as regexReplace
 from re import match as regexMatch
 
+###
+### Page Table
+###
 def getPageTable(pageSoup):
     return pageSoup.body.find('div', class_='body-content').find('table')
 
@@ -46,50 +49,103 @@ def checkColumnLabels(pageTable, expectedColumns):
     else:
         print("## Status: Found all expected website table column labels in expected order.")
 
+###
+### Songs
+###
 def songTitle(songRow):
-    return songRow.find_all('td')[1].a.text
+    try:
+        return songRow.find_all('td')[1].a.text
+    except:
+        return None
 
 def songArtist(songRow):
-    return songRow.find_all('td')[2].a.text
+    try:
+        return songRow.find_all('td')[2].a.text
+    except:
+        return None
 
 def songTempo(songRow):
-    return int(songRow.find_all('td')[3].a.text)
+    try:
+        return int(songRow.find_all('td')[3].a.text)
+    except:
+        return None
 
 def songBeatStrength(songRow):
-    return float(regexMatch("This song has a beat strength of (\d{1,2}\.\d{1,2})",
-                            songRow.find_all('td')[4]
-                                   .find_all('a')[0]
-                                   .img.attrs['title']
-                           ).group(1)
+    try:
+        return float(regexMatch("This song has a beat strength of (\d{1,2}\.\d{1,2})",
+                                songRow.find_all('td')[4]
+                                       .find_all('a')[0]
+                                       .img.attrs['title']
+                               ).group(1)
                 )
+    except:
+        return None
 
 def songEnergy(songRow):
-    return float(regexMatch("This song has an energy level of (\d{1,2}\.\d{1,2})",
-                            songRow.find_all('td')[4]
-                                   .find_all('a')[1]
-                                   .img.attrs['title']
-                           ).group(1)
+    try:
+        return float(regexMatch("This song has an energy level of (\d{1,2}\.\d{1,2})",
+                                songRow.find_all('td')[4]
+                                       .find_all('a')[1]
+                                       .img.attrs['title']
+                               ).group(1)
                 )
+    except:
+        return None
 
 def songMood(songRow):
-    return float(regexMatch("This song has a mood level of (\d{1,2}\.\d{1,2})",
-                            songRow.find_all('td')[4]
-                                   .find_all('a')[2]
-                                   .img.attrs['title']
-                           ).group(1)
-                )
+    try:
+        return float(regexMatch("This song has a mood level of (\d{1,2}\.\d{1,2})",
+                                songRow.find_all('td')[4]
+                                       .find_all('a')[2]
+                                       .img.attrs['title']
+                               ).group(1)
+                    )
+    except:
+        return None
 
 def songDanceStyles(songRow):
     styles = []
-    for a in songRow.find_all('td')[5].select("a[data-dance-name]"):
-        if a.attrs['data-dance-name']:
-            styles.append(a.attrs['data-dance-name'])
-    return styles
+    tds = songRow.find_all('td')
+    if tds and len(tds) >= 6:
+        for a in tds[5].select("a[data-dance-name]"):
+            if a.attrs['data-dance-name']:
+                styles.append(a.attrs['data-dance-name'].lower())
+        return styles
+    else:
+        return None
 
 def songTags(songRow):
     tags = []
-    for a in songRow.find_all('td')[6].select("a[data-tag-value]"):
-        if a.attrs['data-tag-value']:
-            tags.append(a.attrs['data-tag-value'])
-    return tags
+    tds = songRow.find_all('td')
+    if tds and len(tds) >= 7:
+        for a in tds[6].select("a[data-tag-value]"):
+            if a.attrs['data-tag-value']:
+                tags.append(a.attrs['data-tag-value'].lower())
+        return tags
+    else:
+        return None
 
+###
+### Interface
+###
+def getSongs(dataBaseSiteSoup, expectedColumns):
+    # Validate table columns
+    pageSongTable = getPageTable(dataBaseSiteSoup)
+    checkColumnLabels(pageSongTable, expectedColumns)
+
+    songRows      = getSongRows(pageSongTable)
+    songs         = []
+    for s in songRows:
+        songs.append({
+            "title":    songTitle(s),
+            "artist":   songArtist(s),
+            "tempo":    songTempo(s),
+            "beat":     songBeatStrength(s),
+            "energy":   songEnergy(s),
+            "mood":     songMood(s),
+            "dances":   songDanceStyles(s),
+            "tags":     songTags(s)
+        })
+    return songs
+
+    
