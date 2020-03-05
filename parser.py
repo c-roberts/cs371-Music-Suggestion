@@ -20,7 +20,7 @@ for s in song_list:
         continue
     else: 
         # write stuff to file as ISAs
-        s_title = s['title'].replace(" ", "")
+        s_title = s['title'].replace(" ", "").replace("'", "")
         s_artist = s['artist'].replace(" ", "")
 
         f.write("\n(isa {} Song-CW)\n".format(s_title))
@@ -32,7 +32,8 @@ for s in song_list:
 
         # dances
         for d in s['dances']:
-            f.write("(CanBeDancedTo {} {})\n".format(d.replace(" ", ""), s_title))
+            d_i = d.replace(" ", "").replace("(", "/").replace(")", "")
+            f.write("(CanBeDancedTo {} {})\n".format(d_i, s_title))
    
 
         

@@ -6,30 +6,35 @@
 
 
 (isa TempoOfSong BinaryPredicate)
+(genlPreds TempoOfSong isa)
 (arity TempoOfSong 2)
 (arg1Isa TempoOfSong Number)
 (arg2Isa TempoOfSong Song-CW)
 (comment TempoOfSong “The tempo of a song, given in BPM”)
 
 (isa EnergyOfSong BinaryPredicate)
+(genlPreds EnergyOfSong isa)
 (arity EnergyOfSong 2)
 (arg1Isa EnergyOfSong Level)
 (arg2Isa EnergyOfSong Song-CW)
 (comment EnergyOfSong “The energy of a song, given a level (high/medium/low)”)
 
 (isa MoodOfSong BinaryPredicate)
+(genlPreds MoodOfSong isa)
 (arity MoodOfSong 2)
 (arg1Isa MoodOfSong Level)
 (arg2Isa MoodOfSong Song-CW)
 (comment MoodOfSong “The mood of a song, given a level (high/medium/low)”)
 
 (isa BeatOfSong BinaryPredicate)
+(genlPreds BeatOfSong isa)
 (arity BeatOfSong 2)
 (arg1Isa BeatOfSong Level)
 (arg2Isa BeatOfSong Song-CW)
 (comment BeatOfSong “The beat of a song, given a level (high/medium/low)”)
 
 (isa CanBeDancedTo BinaryPredicate)
+(genlPreds CanBeDancedTo isa)
 (arity CanBeDancedTo 2)
 (arg1Isa CanBeDancedTo DancingTypeByStyle)
 (arg2Isa CanBeDancedTo Song-CW)
