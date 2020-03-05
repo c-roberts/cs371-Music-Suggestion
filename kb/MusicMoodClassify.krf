@@ -2,48 +2,48 @@
 
 ;; backward-chaining 
 (<== (songMood ?song happy)
-     (songTempo ?song high)
+     (TempoOfSong ?song high)
      (songPitch ?song high)
-     (songEngergy ?song medium))
+     (EnergyOfSong ?song medium))
 
 
 (<== (songMood ?song exuberant)
-     (songTempo ?song high)
+     (TempoOfSong ?song high)
      (songPitch ?song high)
-     (songEngergy ?song high))
+     (EnergyOfSong ?song high))
 
 
 (<== (songMood ?song energetic)
-     (songTempo ?song high)
+     (TempoOfSong ?song high)
      (songPitch ?song medium)
-     (songEngergy ?song high))
+     (EnergyOfSong ?song high))
 
 
 (<== (songMood ?song frantic)
-     (songTempo ?song high)
+     (TempoOfSong ?song high)
      (songPitch ?song low)
-     (songEngergy ?song high))
+     (EnergyOfSong ?song high))
 
 
 (<== (songMood ?song anxious)
-     (songTempo ?song low)
+     (TempoOfSong ?song low)
      (songPitch ?song low)
-     (songEngergy ?song medium))
+     (EnergyOfSong ?song medium))
 
 
 (<== (songMood ?song depressed)
-     (songTempo ?song low)
+     (TempoOfSong ?song low)
      (songPitch ?song low)
-     (songEngergy ?song low))
+     (EnergyOfSong ?song low))
 
 
 (<== (songMood ?song calm)
-     (songTempo ?song low)
+     (TempoOfSong ?song low)
      (songPitch ?song medium)
-     (songEngergy ?song low))
+     (EnergyOfSong ?song low))
 
 
 (<== (songMood ?song content)
-     (songTempo ?song low)
+     (TempoOfSong ?song low)
      (songPitch ?song high)
-     (songEngergy ?song low))
+     (EnergyOfSong ?song low))
