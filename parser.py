@@ -27,7 +27,7 @@ for s in song_list:
         f.write("(composerOfMusicalCW {} {})\n".format(s_artist, s_title))
         f.write("(TempoOfSong {} {})\n".format(s['tempo'], s_title))
         f.write("(EnergyOfSong {} {})\n".format(translateVal(s['energy']), s_title))
-        f.write("(MoodOfSong {} {})\n".format(translateVal(s['mood']), s_title))
+        #f.write("(MoodOfSong {} {})\n".format(translateVal(s['mood']), s_title))
         f.write("(BeatOfSong {} {})\n".format(translateVal(s['beat']), s_title))
 
         # dances
