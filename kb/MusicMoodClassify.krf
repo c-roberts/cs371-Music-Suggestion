@@ -1,4 +1,4 @@
-(in-microtheory CS371-MusicMoodClassification)
+(in-microtheory cs371-Music-Suggestion)
 
 ;; backward-chaining 
 (<== (songMood ?song happy)
