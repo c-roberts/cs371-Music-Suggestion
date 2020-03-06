@@ -1,49 +1,65 @@
 (in-microtheory cs371-Music-Suggestion)
 
-;; backward-chaining 
-(<== (songMood ?song happy)
-     (BeatOfSong ?song high)
-     (songPitch ?song high)
-     (EnergyOfSong ?song medium))
+;; retrieve song mood
+(isa songMood Predicate)
+(arity songMood 2)
+(arg1Isa songMood StringObject)
+(arg2Isa songMood Song-CW)
+
+;; horn-clauses
+(<== (songMood happy ?song)
+     (BeatOfSong highL ?song)
+     (PitchOfSong highL ?song)
+     (EnergyOfSong mediumL ?song))
 
 
-(<== (songMood ?song exuberant)
-     (BeatOfSong ?song high)
-     (songPitch ?song high)
-     (EnergyOfSong ?song high))
+(<== (songMood exuberant ?song)
+     (BeatOfSong highL ?song)
+     (PitchOfSong highL ?song)
+     (EnergyOfSong highL ?song))
 
 
-(<== (songMood ?song energetic)
-     (BeatOfSong ?song high)
-     (songPitch ?song medium)
-     (EnergyOfSong ?song high))
+(<== (songMood energetic ?song)
+     (BeatOfSong highL ?song)
+     (PitchOfSong mediumL ?song)
+     (EnergyOfSong highL ?song))
 
 
-(<== (songMood ?song frantic)
-     (BeatOfSong ?song high)
-     (songPitch ?song low)
-     (EnergyOfSong ?song high))
+(<== (songMood frantic ?song)
+     (BeatOfSong highL ?song)
+     (PitchOfSong lowL ?song)
+     (EnergyOfSong highL ?song))
 
 
-(<== (songMood ?song anxious)
-     (BeatOfSong ?song low)
-     (songPitch ?song low)
-     (EnergyOfSong ?song medium))
+(<== (songMood anxious ?song)
+     (BeatOfSong lowL ?song)
+     (PitchOfSong lowL ?song)
+     (EnergyOfSong mediumL ?song))
 
 
-(<== (songMood ?song depressed)
-     (BeatOfSong ?song low)
-     (songPitch ?song low)
-     (EnergyOfSong ?song low))
+(<== (songMood depressed ?song)
+     (BeatOfSong lowL ?song)
+     (PitchOfSong lowL ?song)
+     (EnergyOfSong lowL ?song))
+
+(<== (songMood depressed ?song)
+     (BeatOfSong mediumL ?song)
+     (PitchOfSong lowL ?song)
+     (EnergyOfSong lowL ?song))
 
 
-(<== (songMood ?song calm)
-     (BeatOfSong ?song low)
-     (songPitch ?song medium)
-     (EnergyOfSong ?song low))
+(<== (songMood calm ?song)
+     (BeatOfSong lowL ?song)
+     (PitchOfSong mediumL ?song)
+     (EnergyOfSong lowL ?song))
+
+(<== (songMood calm ?song)
+     (BeatOfSong mediumL ?song)
+     (PitchOfSong mediumL ?song)
+     (EnergyOfSong lowL ?song))
 
 
-(<== (songMood ?song content)
-     (BeatOfSong ?song low)
-     (songPitch ?song high)
-     (EnergyOfSong ?song low))
+(<== (songMood content ?song)
+     (BeatOfSong lowL ?song)
+     (PitchOfSong highL ?song)
+     (EnergyOfSong lowL ?song))

@@ -2,11 +2,11 @@ from Data_Collection.collect import getSongs
 
 def translateVal(v):
     if v <= (1/3):
-        return "low"
+        return "lowL"
     elif v <= (2/3):
-        return "medium"
+        return "mediumL"
     else:
-        return "high"
+        return "highL"
 
 # run scraper -> dictionary
 song_list = getSongs()

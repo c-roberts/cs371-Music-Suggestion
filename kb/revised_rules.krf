@@ -1,0 +1,63 @@
+(in-microtheory cs371-Music-Suggestion)
+
+(isa songMood Predicate)
+(arity songMood 2)
+(arg1Isa songMood StringObject)
+(arg2Isa songMood Song-CW)
+
+
+;; horn-clauses
+(<== (songMood ?mood ?song)
+     (equals ?mood happy)
+     (BeatOfSong highL ?song)
+     (songPitch highL ?song)
+     (EnergyOfSong mediumL ?song))
+
+
+(<== (songMood ?mood ?song)
+     (equals ?mood exuberant)
+     (BeatOfSong highL ?song)
+     (songPitch highL ?song)
+     (EnergyOfSong highL ?song))
+
+
+(<== (songMood ?mood ?song)
+     (BeatOfSong highL ?song)
+     (songPitch mediumL ?song)
+     (EnergyOfSong highL ?song)
+     (equals ?mood energetic))
+
+
+(<== (songMood ?mood ?song)
+     (BeatOfSong highL ?song)
+     (songPitch lowL ?song)
+     (EnergyOfSong highL ?song)
+     (equals ?mood frantic))
+
+
+(<== (songMood ?mood ?song)
+     (BeatOfSong lowL ?song)
+     (songPitch lowL ?song)
+     (EnergyOfSong mediumL ?song)
+     (equals ?mood anxious))
+
+
+(<== (songMood ?mood ?song)
+     (BeatOfSong lowL ?song)
+     (songPitch lowL ?song)
+     (EnergyOfSong lowL ?song)
+     (equals ?mood depressed))
+
+
+(<== (songMood ?mood ?song)
+     (BeatOfSong lowL ?song)
+     (songPitch mediumL ?song)
+     (EnergyOfSong lowL ?song)
+     (equals ?mood calm))
+
+
+(<== (songMood ?mood ?song)
+     (BeatOfSong lowL ?song)
+     (songPitch highL ?song)
+     (EnergyOfSong lowL ?song)
+     (equals ?mood content))
