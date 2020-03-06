@@ -1,12 +1,25 @@
 (in-microtheory cs371-Music-Suggestion)
 
+
+;; retrieve song with same mood
+(isa sameSongMood Predicate)
+(arity sameSongMood 2)
+(arg1Isa sameSongMood Song-CW)
+(arg2Isa sameSongMood Song-CW)
+
+(<== (sameSongMood ?song1 ?song2)
+     (equals ?mood1 ?mood2)
+     (songMood ?mood2 ?song2)
+     (songMood ?mood1 ?song1)
+     (different ?song1 ?song2))
+
+
 ;; retrieve song mood
 (isa songMood Predicate)
 (arity songMood 2)
 (arg1Isa songMood StringObject)
 (arg2Isa songMood Song-CW)
 
-;; horn-clauses
 (<== (songMood happy ?song)
      (BeatOfSong highL ?song)
      (PitchOfSong highL ?song)
