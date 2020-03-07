@@ -10,6 +10,11 @@ beautifulsoup4 = "*"
 requests = "*"
 pprint = "*"
 bs4 = "*"
+numpy = "*"
+matplotlib = "*"
+librosa = "*"
+sh = "*"
+validators = "*"
 
 [requires]
 python_version = "3.7"

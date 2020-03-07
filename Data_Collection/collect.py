@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from Data_Collection import cacher
 from Data_Collection import scraper
 
-def getSongs():
+def initialize():
     dataBaseSiteBaseURL = "https://www.music4dance.net/song"
     dataBaseSiteHTMLDumpPath = "site_HTML.pickle"
 
@@ -29,6 +29,10 @@ def getSongs():
                                      features="html.parser"
                                     )
     print("## Status: Parsed HTML into internal representation.")
-
+    return dataBaseSiteSoup, expectedColumns
+    
+def getSongs():
+    dataBaseSiteSoup, expectedColumns = initialize()
+    
     # Get songs
     return scraper.getSongs(dataBaseSiteSoup, expectedColumns)

@@ -3,6 +3,13 @@ from sys import exit
 from re import sub as regexReplace
 from re import match as regexMatch
 
+from sh import rm
+from validators import url as valid_url
+
+from Data_Collection.frequency_analyzer import downloadSample
+from Data_Collection.frequency_analyzer import convertSample
+from Data_Collection.frequency_analyzer import songFrequency
+
 ###
 ### Page Table
 ###
@@ -125,6 +132,39 @@ def songTags(songRow):
     else:
         return None
 
+def songLink(songRow):
+    try:
+        link = songRow.find_all('td')[0].select("a[data-sample]")[0].attrs['data-sample'].strip()
+        if valid_url(link):
+            return link
+        else:
+            return None
+    except:
+        return None
+
+def songData(songRow):
+    title = songTitle(songRow)
+    artist = songArtist(songRow)
+    link = songLink(songRow)
+    if not link:
+        return None
+
+    file_name = downloadSample(link, title, artist)
+    file_name = convertSample(file_name)
+    if not file_name:
+        return None
+
+    return {
+        "title":    title,
+        "artist":   artist,
+        "avgfreq":  songFrequency(file_name),
+        "tempo":    songTempo(songRow),
+        "beat":     songBeatStrength(songRow),
+        "energy":   songEnergy(songRow),
+        "mood":     songMood(songRow),
+        "dances":   songDanceStyles(songRow),
+        "tags":     songTags(songRow)
+    }
 ###
 ### Interface
 ###
@@ -136,16 +176,10 @@ def getSongs(dataBaseSiteSoup, expectedColumns):
     songRows      = getSongRows(pageSongTable)
     songs         = []
     for s in songRows:
-        songs.append({
-            "title":    songTitle(s),
-            "artist":   songArtist(s),
-            "tempo":    songTempo(s),
-            "beat":     songBeatStrength(s),
-            "energy":   songEnergy(s),
-            "mood":     songMood(s),
-            "dances":   songDanceStyles(s),
-            "tags":     songTags(s)
-        })
+        data = songData(s)
+        if data:
+            songs.append(data)
+    rm("*.unknown")
     print("## Status: Successfully parsed", len(songs), "songs.")
     return songs
 
