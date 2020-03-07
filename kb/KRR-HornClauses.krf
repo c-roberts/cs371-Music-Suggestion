@@ -76,3 +76,8 @@
      (BeatOfSong lowL ?song)
      (PitchOfSong highL ?song)
      (EnergyOfSong lowL ?song))
+
+(<== (songMood content ?song)
+     (BeatOfSong mediumL ?song)
+     (PitchOfSong highL ?song)
+     (EnergyOfSong lowL ?song))

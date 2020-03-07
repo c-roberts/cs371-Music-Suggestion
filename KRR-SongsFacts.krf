@@ -5,7 +5,6 @@
 (TempoOfSong 110 Gymnopedie)
 (EnergyOfSong lowL Gymnopedie)
 (BeatOfSong mediumL Gymnopedie)
-(PitchOfSong mediumL Gymnopedie)
 (CanBeDancedTo slowwaltz Gymnopedie)
 
 (isa Tejuromadremia Song-CW)
@@ -13,7 +12,6 @@
 (TempoOfSong 125 Tejuromadremia)
 (EnergyOfSong lowL Tejuromadremia)
 (BeatOfSong mediumL Tejuromadremia)
-(PitchOfSong highL Tejuromadremia)
 (CanBeDancedTo argentinetango Tejuromadremia)
 
 (isa YouDontKnowNothingAboutLove Song-CW)
@@ -21,7 +19,6 @@
 (TempoOfSong 80 YouDontKnowNothingAboutLove)
 (EnergyOfSong mediumL YouDontKnowNothingAboutLove)
 (BeatOfSong mediumL YouDontKnowNothingAboutLove)
-(PitchOfSong highL YouDontKnowNothingAboutLove)
 (CanBeDancedTo viennesewaltz YouDontKnowNothingAboutLove)
 
 (isa NocheDeEstrellas-tango Song-CW)
@@ -29,7 +26,6 @@
 (TempoOfSong 118 NocheDeEstrellas-tango)
 (EnergyOfSong lowL NocheDeEstrellas-tango)
 (BeatOfSong mediumL NocheDeEstrellas-tango)
-(PitchOfSong highL NocheDeEstrellas-tango)
 (CanBeDancedTo tango/ballroom NocheDeEstrellas-tango)
 
 (isa TangoPizzicato Song-CW)
@@ -37,7 +33,6 @@
 (TempoOfSong 124 TangoPizzicato)
 (EnergyOfSong mediumL TangoPizzicato)
 (BeatOfSong mediumL TangoPizzicato)
-(PitchOfSong highL TangoPizzicato)
 (CanBeDancedTo tango/ballroom TangoPizzicato)
 
 (isa LetThereBeLove-slowfoxtrot Song-CW)
@@ -45,7 +40,6 @@
 (TempoOfSong 116 LetThereBeLove-slowfoxtrot)
 (EnergyOfSong lowL LetThereBeLove-slowfoxtrot)
 (BeatOfSong highL LetThereBeLove-slowfoxtrot)
-(PitchOfSong highL LetThereBeLove-slowfoxtrot)
 (CanBeDancedTo slowfoxtrot LetThereBeLove-slowfoxtrot)
 
 (isa LeanBaby Song-CW)
@@ -53,7 +47,6 @@
 (TempoOfSong 123 LeanBaby)
 (EnergyOfSong lowL LeanBaby)
 (BeatOfSong mediumL LeanBaby)
-(PitchOfSong highL LeanBaby)
 (CanBeDancedTo slowfoxtrot LeanBaby)
 
 (isa FeelingGood Song-CW)
@@ -61,7 +54,6 @@
 (TempoOfSong 117 FeelingGood)
 (EnergyOfSong highL FeelingGood)
 (BeatOfSong mediumL FeelingGood)
-(PitchOfSong highL FeelingGood)
 (CanBeDancedTo slowfoxtrot FeelingGood)
 
 (isa UnderTheBoardwalk Song-CW)
@@ -69,7 +61,6 @@
 (TempoOfSong 120 UnderTheBoardwalk)
 (EnergyOfSong highL UnderTheBoardwalk)
 (BeatOfSong highL UnderTheBoardwalk)
-(PitchOfSong highL UnderTheBoardwalk)
 (CanBeDancedTo rumba UnderTheBoardwalk)
 
 (isa SiLosRumberosMeLlaman Song-CW)
@@ -77,5 +68,4 @@
 (TempoOfSong 154 SiLosRumberosMeLlaman)
 (EnergyOfSong highL SiLosRumberosMeLlaman)
 (BeatOfSong mediumL SiLosRumberosMeLlaman)
-(PitchOfSong highL SiLosRumberosMeLlaman)
 (CanBeDancedTo mambo SiLosRumberosMeLlaman)
