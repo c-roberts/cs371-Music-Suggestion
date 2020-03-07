@@ -179,7 +179,6 @@ def getSongs(dataBaseSiteSoup, expectedColumns):
         data = songData(s)
         if data:
             songs.append(data)
-    rm("*.unknown")
     print("## Status: Successfully parsed", len(songs), "songs.")
     return songs
 

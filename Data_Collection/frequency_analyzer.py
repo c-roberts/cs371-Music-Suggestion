@@ -24,6 +24,7 @@ def convertSample(file_name):
         if aac_match:
             encoding = aac_match.group(1)
             print("!! Error: Unsupported Apple audio encoding:", encoding)
+            rm(file_name)
             return None
         print("!! Error: Downloaded 'audio' file", "'"+file_name+"'", "with attributes:")
         print("         ", info)
