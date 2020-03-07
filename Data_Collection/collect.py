@@ -3,9 +3,10 @@ from bs4 import BeautifulSoup
 from Data_Collection import cacher
 from Data_Collection import scraper
 
-def initialize():
-    dataBaseSiteBaseURL = "https://www.music4dance.net/song"
-    dataBaseSiteHTMLDumpPath = "site_HTML.pickle"
+def getSongs():
+    databaseSiteBaseURL      = "https://www.music4dance.net/song"
+    databaseSiteHTMLDumpPath = "Data_Collection/site_HTML.pickle"
+    databaseDumpPath         = "Data_Collection/data.json"
 
     # In expected order
     expectedColumns = ['Like/Play',
@@ -20,19 +21,21 @@ def initialize():
                        'Modified'
                       ]
 
-    dataBaseSiteHTML = cacher.loadAndCacheDatabaseHTML(dataBaseSiteBaseURL,
-                                                       dataBaseSiteHTMLDumpPath
-                                                      )
+    database = cacher.loadCachedDatabase(databaseDumpPath)
+    if not database:
+        databaseSiteHTML = cacher.loadAndCacheDatabaseHTML(databaseSiteBaseURL,
+                                                           databaseSiteHTMLDumpPath
+                                                          )
 
-    # Parse HTML
-    dataBaseSiteSoup = BeautifulSoup(dataBaseSiteHTML,
-                                     features="html.parser"
-                                    )
-    print("## Status: Parsed HTML into internal representation.")
-    return dataBaseSiteSoup, expectedColumns
-    
-def getSongs():
-    dataBaseSiteSoup, expectedColumns = initialize()
-    
-    # Get songs
-    return scraper.getSongs(dataBaseSiteSoup, expectedColumns)
+        # Parse HTML
+        databaseSiteSoup = BeautifulSoup(databaseSiteHTML,
+                                         features="html.parser"
+                                        )
+        print("## Status: Parsed HTML into internal representation.")
+
+        # Get songs
+        database = scraper.getSongs(databaseSiteSoup, expectedColumns)
+        cacher.cacheDatabase(databaseDumpPath, database)
+        print("## Status: Cached copy of Music 4 Dance database for later.")
+
+    return database

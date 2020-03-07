@@ -5,15 +5,29 @@ from requests import get as getHTML
 from os import path
 from pickle import dump as pdump
 from pickle import load as pload
+from json import dumps as jdump
+from json import loads as jload
 
-def loadAndCacheDatabaseHTML(dataBaseSiteBaseURL, dataBaseSiteHTMLDumpPath):
-    if path.exists(dataBaseSiteHTMLDumpPath):
+def loadCachedDatabase(databaseDumpPath):
+    if path.exists(databaseDumpPath):
+        print("## Status: Found cached copy of Music 4 Dance database.")
+        with open(databaseDumpPath, 'r') as f:
+            return jload(f.read())
+    else:
+        return None
+
+def cacheDatabase(databaseDumpPath, database):
+    with open(databaseDumpPath, 'w') as f:
+        f.write(jdump(database))
+
+def loadAndCacheDatabaseHTML(databaseSiteBaseURL, databaseSiteHTMLDumpPath):
+    if path.exists(databaseSiteHTMLDumpPath):
         print("## Status: Found cached copy of Music 4 Dance website.")
-        dataBaseSiteHTML = pload(open(dataBaseSiteHTMLDumpPath, "rb"))
+        databaseSiteHTML = pload(open(databaseSiteHTMLDumpPath, "rb"))
     else:
         # Make HTTP request
         try:
-            dataBaseSiteHTML = getHTML(dataBaseSiteBaseURL).text
+            databaseSiteHTML = getHTML(databaseSiteBaseURL).text
         except:
             print("!! Error: Retrieving Music 4 Dance website unsuccessfull.")
             exit(0)
@@ -21,7 +35,7 @@ def loadAndCacheDatabaseHTML(dataBaseSiteBaseURL, dataBaseSiteHTMLDumpPath):
             print("## Status: Retrieved Music 4 Dance website.")
 
         # Save for later
-        pdump(dataBaseSiteHTML, open(dataBaseSiteHTMLDumpPath, "wb"))
+        pdump(databaseSiteHTML, open(databaseSiteHTMLDumpPath, "wb"))
         print("## Status: Cached copy of Music 4 Dance website for later.")
 
-    return dataBaseSiteHTML
+    return databaseSiteHTML
