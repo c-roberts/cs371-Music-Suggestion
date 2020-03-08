@@ -6,7 +6,7 @@
 (EnergyOfSong lowL Gymnopedie)
 (BeatOfSong mediumL Gymnopedie)
 (PitchOfSong mediumL Gymnopedie)
-(CanBeDancedTo slowwaltz Gymnopedie)
+(MeterOfSong 4/4 Gymnopedie)
 
 (isa Tejuromadremia Song-CW)
 (composerOfMusicalCW OrquestaTípicaOsvaldoFresedo Tejuromadremia)
@@ -14,7 +14,8 @@
 (EnergyOfSong lowL Tejuromadremia)
 (BeatOfSong mediumL Tejuromadremia)
 (PitchOfSong highL Tejuromadremia)
-(CanBeDancedTo argentinetango Tejuromadremia)
+(MeterOfSong 4/4 Tejuromadremia)
+(StyleOfSong latin Tejuromadremia)
 
 (isa YouDontKnowNothingAboutLove Song-CW)
 (composerOfMusicalCW RyanShaw YouDontKnowNothingAboutLove)
@@ -22,7 +23,7 @@
 (EnergyOfSong mediumL YouDontKnowNothingAboutLove)
 (BeatOfSong mediumL YouDontKnowNothingAboutLove)
 (PitchOfSong highL YouDontKnowNothingAboutLove)
-(CanBeDancedTo viennesewaltz YouDontKnowNothingAboutLove)
+(MeterOfSong 3/4 YouDontKnowNothingAboutLove)
 
 (isa NocheDeEstrellas-tango Song-CW)
 (composerOfMusicalCW TheStringsOfParis NocheDeEstrellas-tango)
@@ -30,7 +31,7 @@
 (EnergyOfSong lowL NocheDeEstrellas-tango)
 (BeatOfSong mediumL NocheDeEstrellas-tango)
 (PitchOfSong highL NocheDeEstrellas-tango)
-(CanBeDancedTo tango/ballroom NocheDeEstrellas-tango)
+(MeterOfSong 4/4 NocheDeEstrellas-tango)
 
 (isa TangoPizzicato Song-CW)
 (composerOfMusicalCW VictorFedoré&HisOrchestra TangoPizzicato)
@@ -38,7 +39,7 @@
 (EnergyOfSong mediumL TangoPizzicato)
 (BeatOfSong mediumL TangoPizzicato)
 (PitchOfSong highL TangoPizzicato)
-(CanBeDancedTo tango/ballroom TangoPizzicato)
+(MeterOfSong 4/4 TangoPizzicato)
 
 (isa LetThereBeLove-slowfoxtrot Song-CW)
 (composerOfMusicalCW TheStringsOfParis LetThereBeLove-slowfoxtrot)
@@ -46,7 +47,7 @@
 (EnergyOfSong lowL LetThereBeLove-slowfoxtrot)
 (BeatOfSong highL LetThereBeLove-slowfoxtrot)
 (PitchOfSong highL LetThereBeLove-slowfoxtrot)
-(CanBeDancedTo slowfoxtrot LetThereBeLove-slowfoxtrot)
+(MeterOfSong 4/4 LetThereBeLove-slowfoxtrot)
 
 (isa LeanBaby Song-CW)
 (composerOfMusicalCW Swingin'Fireballs LeanBaby)
@@ -54,7 +55,7 @@
 (EnergyOfSong lowL LeanBaby)
 (BeatOfSong mediumL LeanBaby)
 (PitchOfSong highL LeanBaby)
-(CanBeDancedTo slowfoxtrot LeanBaby)
+(MeterOfSong 4/4 LeanBaby)
 
 (isa FeelingGood Song-CW)
 (composerOfMusicalCW Ms.LaurynHill FeelingGood)
@@ -62,7 +63,7 @@
 (EnergyOfSong highL FeelingGood)
 (BeatOfSong mediumL FeelingGood)
 (PitchOfSong highL FeelingGood)
-(CanBeDancedTo slowfoxtrot FeelingGood)
+(MeterOfSong 3/4 FeelingGood)
 
 (isa UnderTheBoardwalk Song-CW)
 (composerOfMusicalCW RhythmsdelMundo&TheRollingStones UnderTheBoardwalk)
@@ -70,7 +71,7 @@
 (EnergyOfSong highL UnderTheBoardwalk)
 (BeatOfSong highL UnderTheBoardwalk)
 (PitchOfSong highL UnderTheBoardwalk)
-(CanBeDancedTo rumba UnderTheBoardwalk)
+(MeterOfSong 4/4 UnderTheBoardwalk)
 
 (isa SiLosRumberosMeLlaman Song-CW)
 (composerOfMusicalCW OrquestaRevolucion70 SiLosRumberosMeLlaman)
@@ -78,4 +79,5 @@
 (EnergyOfSong highL SiLosRumberosMeLlaman)
 (BeatOfSong mediumL SiLosRumberosMeLlaman)
 (PitchOfSong highL SiLosRumberosMeLlaman)
-(CanBeDancedTo mambo SiLosRumberosMeLlaman)
+(MeterOfSong 4/4 SiLosRumberosMeLlaman)
+(StyleOfSong latin SiLosRumberosMeLlaman)
