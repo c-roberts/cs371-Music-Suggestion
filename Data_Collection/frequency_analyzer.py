@@ -8,6 +8,7 @@ import librosa
 
 def downloadSample(songLink, songTitle, songArtist):
     file_name = songTitle + ' - ' + songArtist + '.unknown'
+    file_name = file_name.replace('/', '_slash_')
 
     with open(file_name, 'wb') as f:
         f.write(HTTPGet(songLink).content)

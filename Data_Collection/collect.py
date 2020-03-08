@@ -23,18 +23,24 @@ def getSongs():
 
     database = cacher.loadCachedDatabase(databaseDumpPath)
     if not database:
-        databaseSiteHTML = cacher.loadAndCacheDatabaseHTML(databaseSiteBaseURL,
-                                                           databaseSiteHTMLDumpPath
-                                                          )
+        databaseSiteHTMLPages = cacher.loadAndCacheDbHTMLPages(databaseSiteBaseURL,
+                                                          databaseSiteHTMLDumpPath,
+                                                          2
+                                                         )
 
-        # Parse HTML
-        databaseSiteSoup = BeautifulSoup(databaseSiteHTML,
-                                         features="html.parser"
-                                        )
+        sitePageSoups = []
+        for siteHTMLPage in databaseSiteHTMLPages:
+            # Parse HTML
+            sitePageSoups.append(BeautifulSoup(siteHTMLPage,
+                                               features="html.parser"
+                                              ))
         print("## Status: Parsed HTML into internal representation.")
 
         # Get songs
-        database = scraper.getSongs(databaseSiteSoup, expectedColumns)
+        database = []
+        for sitePageSoup in sitePageSoups:
+            database.extend(scraper.getSongs(sitePageSoup, expectedColumns))
+
         cacher.cacheDatabase(databaseDumpPath, database)
         print("## Status: Cached copy of Music 4 Dance database for later.")
 

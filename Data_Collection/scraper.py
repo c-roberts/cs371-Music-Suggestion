@@ -49,12 +49,12 @@ def checkColumnLabels(pageTable, expectedColumns):
             missing.append(expectedColumns[colIndex])
                
     if len(missing):
-        print("!! Error: Website table is missing the following expected labels:", missing)
+        print("!! Error: Page table is missing the following expected labels:", missing)
         print("!!        Please update the data collection program to the new website format.")
         print("!!        Note that the expected label list must be correctly ordered.")
         exit(0)
     else:
-        print("## Status: Found all expected website table column labels in expected order.")
+        print("## Status: Found all expected page table column labels in expected order.")
 
 ###
 ### Songs

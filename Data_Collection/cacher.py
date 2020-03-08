@@ -20,22 +20,25 @@ def cacheDatabase(databaseDumpPath, database):
     with open(databaseDumpPath, 'w') as f:
         f.write(jdump(database))
 
-def loadAndCacheDatabaseHTML(databaseSiteBaseURL, databaseSiteHTMLDumpPath):
+def loadAndCacheDbHTMLPages(databaseSiteBaseURL, databaseSiteHTMLDumpPath, numPages):
     if path.exists(databaseSiteHTMLDumpPath):
         print("## Status: Found cached copy of Music 4 Dance website.")
-        databaseSiteHTML = pload(open(databaseSiteHTMLDumpPath, "rb"))
+        databaseSiteHTMLPages = pload(open(databaseSiteHTMLDumpPath, "rb"))
     else:
         # Make HTTP request
         try:
-            databaseSiteHTML = getHTML(databaseSiteBaseURL).text
+            databaseSiteHTMLPages = []
+            for i in range(numPages):
+                databaseSiteHTMLPages.append(getHTML(databaseSiteBaseURL + "?page=%d" % (i+1)).text)
         except:
             print("!! Error: Retrieving Music 4 Dance website unsuccessfull.")
             exit(0)
         else:
             print("## Status: Retrieved Music 4 Dance website.")
 
+
         # Save for later
-        pdump(databaseSiteHTML, open(databaseSiteHTMLDumpPath, "wb"))
+        pdump(databaseSiteHTMLPages, open(databaseSiteHTMLDumpPath, "wb"))
         print("## Status: Cached copy of Music 4 Dance website for later.")
 
-    return databaseSiteHTML
+    return databaseSiteHTMLPages
