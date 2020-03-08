@@ -25,7 +25,7 @@ def getSongs():
     if not database:
         databaseSiteHTMLPages = cacher.loadAndCacheDbHTMLPages(databaseSiteBaseURL,
                                                           databaseSiteHTMLDumpPath,
-                                                          2
+                                                          10
                                                          )
 
         sitePageSoups = []
