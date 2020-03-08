@@ -18,7 +18,7 @@ def translatePitch(v):
         return "highL"
 
 ## run scraper -> dictionary
-##from Data_Collection.collect import getSongs
+#from Data_Collection.collect import getSongs
 ##song_list = getSongs()
 
 # open song list from json
@@ -32,7 +32,7 @@ f = open(sys.path[0] + '/kb/KRR-SongsFacts.krf', "w")
 f.write("(in-microtheory cs371-Music-Suggestion)\n")
 
 for s in song_list:
-    s_title = s['title'].replace(" ", "").replace("'", "")
+    s_title = s['title'].replace(" ", "").replace("'", "").replace("(", "-").replace(")", "")
     s_artist = s['artist'].replace(" ", "")
     
     if s['beat'] == None or s['energy'] == None or s['mood'] == None or s['tempo'] == None:
