@@ -81,3 +81,64 @@
      (BeatOfSong mediumL ?song)
      (PitchOfSong highL ?song)
      (EnergyOfSong lowL ?song))
+
+
+;; retrieve dance style
+(isa danceStyle Predicate)
+(arity danceStyle 2)
+(arg1Isa danceStyle StringObject)
+(arg2Isa danceStyle Song-CW)
+
+;; tango - 4/4, 120-128bpm, Ballroom
+(<== (danceStyle tango ?song)
+     (StyleOfSong ?song ballroom)
+     (MeterOfSong ?song 4/4)
+     (greaterThanOrEqualTo ?tempo 120)
+     (lessThanOrEqualTo ?tempo 128)
+     (TempoOfSong ?tempo ?song))
+
+;; balboa - 4/4, 160-260bpm, Swing (big band)
+(<== (danceStyle balboa ?song)
+     (StyleOfSong ?song swing)
+     (MeterOfSong ?song 4/4)
+     (greaterThanOrEqualTo ?tempo 160)
+     (lessThanOrEqualTo ?tempo 260)
+     (TempoOfSong ?tempo ?song))
+
+;; lindy hop - 4/4, 120-180bpm, Swing (big band)
+(<== (danceStyle lindyHop ?song)
+     (StyleOfSong ?song swing)
+     (MeterOfSong ?song 4/4)
+     (greaterThanOrEqualTo ?tempo 120)
+     (lessThanOrEqualTo ?tempo 180)
+     (TempoOfSong ?tempo ?song))
+
+;; cha cha - 4/4, 120-130bpm, Latin
+(<== (danceStyle chaCha ?song)
+     (StyleOfSong ?song latin)
+     (MeterOfSong ?song 4/4)
+     (greaterThanOrEqualTo ?tempo 120)
+     (lessThanOrEqualTo ?tempo 130)
+     (TempoOfSong ?tempo ?song))
+
+;; salsa - 2/4, 96-104, Latin
+(<== (danceStyle salsa ?song)
+     (StyleOfSong ?song latin)
+     (MeterOfSong ?song 2/4)
+     (greaterThanOrEqualTo ?tempo 96)
+     (lessThanOrEqualTo ?tempo 104)
+     (TempoOfSong ?tempo ?song)))
+
+;; blues - 4/4, 40-100bpm 
+(<== (danceStyle blues ?song)
+     (MeterOfSong ?song 4/4)
+     (greaterThanOrEqualTo ?tempo 40)
+     (lessThanOrEqualTo ?tempo 100)
+     (TempoOfSong ?tempo ?song))))
+
+;; waltz - 3/4, 84-90
+(<== (danceStyle waltz ?song)
+     (MeterOfSong ?song 3/4)
+     (greaterThanOrEqualTo ?tempo 84)
+     (lessThanOrEqualTo ?tempo 90)
+     (TempoOfSong ?tempo ?song)))))

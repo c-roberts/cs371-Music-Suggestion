@@ -48,11 +48,27 @@ for s in song_list:
         f.write("(PitchOfSong {} {})\n".format(translatePitch(s['avgfreq']), s_title))
 
         # dances
-        for d in s['dances']:
-            d_i = d.replace(" ", "").replace("(", "/").replace(")", "")
-            f.write("(CanBeDancedTo {} {})\n".format(d_i, s_title))
-            
+        #for d in s['dances']:
+        #    d_i = d.replace(" ", "").replace("(", "/").replace(")", "")
+        #    f.write("(CanBeDancedTo {} {})\n".format(d_i, s_title))
+
+        # tags
+        for t in s['tags']:
+            s_f = []
+            if "/4" in t:
+                f.write("(MeterOfSong {} {})\n".format(t, s_title))
+            elif "swing" in t.lower() and "swing" not in s_f:
+                s_f.append("swing")
+                f.write("(StyleOfSong {} {})\n".format("swing", s_title))
+            elif "latin" in t.lower() and "latin" not in s_f:
+                s_f.append("latin")
+                f.write("(StyleOfSong {} {})\n".format("latin", s_title))
+            elif "ballroom" in t.lower() and "ballroom" not in s_f:
+                s_f.append("ballroom")
+                f.write("(StyleOfSong {} {})\n".format("ballroom", s_title))
+
     #print("Done with \"{}\".".format(s_title))
+
 
 print('Finished parsing {} to knowledge base.'.format(len(song_list)))
 
