@@ -12,6 +12,7 @@
      (songMood ?mood ?song))
 
 
+
 ;; retrieve song with same mood
 (isa sameSongMood Predicate)
 (arity sameSongMood 2)
@@ -24,6 +25,18 @@
      (different ?song1 ?song2))
 
 
+
+;; retrieve song with same artist
+(isa sameSongArtist Predicate)
+(arity sameSongArtist 2)
+(arg1Isa sameSongArtist Song-CW)
+(arg2Isa sameSongArtist Song-CW)
+
+(<== (sameSongArtist ?song1 ?song2)
+     (composerOfMusicalCW ?artist ?song2)
+     (composerOfMusicalCW ?artist ?song1)
+     (different ?song1 ?song2))
+
 ;; retrieve song mood
 (isa songMood Predicate)
 (arity songMood 2)
@@ -35,31 +48,26 @@
      (PitchOfSong highL ?song)
      (EnergyOfSong mediumL ?song))
 
-
 (<== (songMood exuberant ?song)
      (BeatOfSong highL ?song)
      (PitchOfSong highL ?song)
      (EnergyOfSong highL ?song))
-
 
 (<== (songMood energetic ?song)
      (BeatOfSong highL ?song)
      (PitchOfSong mediumL ?song)
      (EnergyOfSong highL ?song))
 
-
 (<== (songMood frantic ?song)
      (BeatOfSong highL ?song)
      (PitchOfSong lowL ?song)
      (EnergyOfSong highL ?song))
-
 
 (<== (songMood anxious ?song)
      (BeatOfSong lowL ?song)
      (PitchOfSong lowL ?song)
      (EnergyOfSong mediumL ?song))
 
-
 (<== (songMood depressed ?song)
      (BeatOfSong lowL ?song)
      (PitchOfSong lowL ?song)
@@ -69,7 +77,6 @@
      (BeatOfSong mediumL ?song)
      (PitchOfSong lowL ?song)
      (EnergyOfSong lowL ?song))
-
 
 (<== (songMood calm ?song)
      (BeatOfSong lowL ?song)
@@ -90,6 +97,7 @@
      (BeatOfSong mediumL ?song)
      (PitchOfSong highL ?song)
      (EnergyOfSong lowL ?song))
+
 
 
 ;; retrieve dance style
@@ -148,6 +156,7 @@
      (lessThanOrEqualTo ?tempo 100))
 
 
+;; simple predicate for getting songs slower than a tempo
 (isa slowSong Predicate)
 (arity slowSong 2)
 (arg1Isa slowSong Song-CW)
