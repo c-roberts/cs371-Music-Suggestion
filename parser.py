@@ -32,7 +32,7 @@ f = open(sys.path[0] + '/kb/KRR-SongsFacts.krf', "w")
 f.write("(in-microtheory cs371-Music-Suggestion)\n")
 
 for s in song_list:
-    s_title = s['title'].replace(" ", "").replace("'", "").replace("(", "-").replace(")", "")
+    s_title = s['title'].replace(" ", "").replace("'", "").replace("(", "-").replace(")", "").replace(":", "").replace(",", "").replace(".", "")
     s_artist = s['artist'].replace(" ", "")
     
     if s['beat'] == None or s['energy'] == None or s['mood'] == None or s['tempo'] == None:
@@ -56,7 +56,7 @@ for s in song_list:
         for t in s['tags']:
             s_f = []
             if "/4" in t:
-                f.write("(MeterOfSong {} {})\n".format(t, s_title))
+                f.write("(MeterOfSong \"{}\" {})\n".format(t, s_title))
             elif "swing" in t.lower() and "swing" not in s_f:
                 s_f.append("swing")
                 f.write("(StyleOfSong {} {})\n".format("swing", s_title))
