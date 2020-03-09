@@ -7,9 +7,16 @@
 (isa TempoOfSong Predicate)
 (genlPreds TempoOfSong isa)
 (arity TempoOfSong 2)
-(arg1Isa TempoOfSong ScalarPointValue)
+(arg1Isa TempoOfSong Integer)
 (arg2Isa TempoOfSong Song-CW)
 (comment TempoOfSong "The tempo of a song, given in BPM")
+
+(isa TitleOfSong Predicate)
+(genlPreds TitleOfSong isa)
+(arity TitleOfSong 2)
+(arg1Isa TitleOfSong StringObject)
+(arg2Isa TitleOfSong Song-CW)
+(comment TitleOfSong "The title of a song, given as a string")
 
 (isa EnergyOfSong Predicate)
 (genlPreds EnergyOfSong isa)

@@ -1,5 +1,16 @@
 (in-microtheory cs371-Music-Suggestion)
 
+;; retrieve song with same mood
+(isa songByMoodandDance Predicate)
+(arity songByMoodandDance 3)
+(arg1Isa songByMoodandDance StringObject)
+(arg2Isa songByMoodandDance StringObject)
+(arg3Isa songByMoodandDance Song-CW)
+
+(<== (songByMoodandDance ?mood ?dance ?song)
+     (danceStyle ?dance ?song)
+     (songMood ?mood ?song))
+
 
 ;; retrieve song with same mood
 (isa sameSongMood Predicate)
@@ -8,9 +19,8 @@
 (arg2Isa sameSongMood Song-CW)
 
 (<== (sameSongMood ?song1 ?song2)
-     (equals ?mood1 ?mood2)
-     (songMood ?mood2 ?song2)
-     (songMood ?mood1 ?song1)
+     (songMood ?mood ?song2)
+     (songMood ?mood ?song1)
      (different ?song1 ?song2))
 
 
@@ -71,7 +81,6 @@
      (PitchOfSong mediumL ?song)
      (EnergyOfSong lowL ?song))
 
-
 (<== (songMood content ?song)
      (BeatOfSong lowL ?song)
      (PitchOfSong highL ?song)
@@ -91,49 +100,59 @@
 
 ;; tango - "4/4", 120-128bpm, Ballroom
 (<== (danceStyle tango ?song)
+     (TempoOfSong ?tempo ?song)
      (MeterOfSong "4/4" ?song)
      (greaterThanOrEqualTo ?tempo 90)
-     (lessThanOrEqualTo ?tempo 130)
-     (TempoOfSong ?tempo ?song))
+     (lessThanOrEqualTo ?tempo 130))
 
 ;; balboa - "4/4", 160-260bpm, Swing (big band)
 (<== (danceStyle balboa ?song)
+     (TempoOfSong ?tempo ?song)
      (MeterOfSong "4/4" ?song)
      (greaterThanOrEqualTo ?tempo 160)
-     (lessThanOrEqualTo ?tempo 260)
-     (TempoOfSong ?tempo ?song))
+     (lessThanOrEqualTo ?tempo 260))
 
 ;; lindy hop - "4/4", 120-180bpm, Swing (big band)
 (<== (danceStyle lindyHop ?song)
+     (TempoOfSong ?tempo ?song)
      (MeterOfSong "4/4" ?song)
      (greaterThanOrEqualTo ?tempo 120)
-     (lessThanOrEqualTo ?tempo 180)
-     (TempoOfSong ?tempo ?song))
+     (lessThanOrEqualTo ?tempo 180))
 
 ;; cha cha - "4/4", 120-130bpm, Latin
 (<== (danceStyle chaCha ?song)
+     (TempoOfSong ?tempo ?song)
      (MeterOfSong "4/4" ?song)
      (greaterThanOrEqualTo ?tempo 120)
-     (lessThanOrEqualTo ?tempo 130)
-     (TempoOfSong ?tempo ?song))
+     (lessThanOrEqualTo ?tempo 130))
 
 ;; salsa - "4/4", 96-104, Latin
 (<== (danceStyle salsa ?song)
+     (TempoOfSong ?tempo ?song)
      (MeterOfSong "4/4" ?song)
      (greaterThanOrEqualTo ?tempo 96)
-     (lessThanOrEqualTo ?tempo 104)
-     (TempoOfSong ?tempo ?song))
+     (lessThanOrEqualTo ?tempo 104))
 
 ;; blues - "4/4", 40-100bpm 
 (<== (danceStyle blues ?song)
+     (TempoOfSong ?tempo ?song)
      (MeterOfSong "4/4" ?song)
      (greaterThanOrEqualTo ?tempo 40)
-     (lessThanOrEqualTo ?tempo 100)
-     (TempoOfSong ?tempo ?song))
+     (lessThanOrEqualTo ?tempo 100))
 
 ;; waltz - "3/4", 84-100
 (<== (danceStyle waltz ?song)
+     (TempoOfSong ?tempo ?song)
      (MeterOfSong "3/4" ?song)
      (greaterThanOrEqualTo ?tempo 84)
-     (lessThanOrEqualTo ?tempo 100)
-     (TempoOfSong ?tempo ?song))
+     (lessThanOrEqualTo ?tempo 100))
+
+
+(isa slowSong Predicate)
+(arity slowSong 2)
+(arg1Isa slowSong Song-CW)
+(arg2Isa slowSong Integer)
+
+(<== (slowSong ?song ?st)
+     (TempoOfSong ?tempo ?song)
+     (lessThanOrEqualTo ?tempo ?st))

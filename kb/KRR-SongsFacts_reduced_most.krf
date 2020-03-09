@@ -2,23 +2,18 @@
 
 (isa Gymnopedie Song-CW)
 (composerOfMusicalCW ErikSatie Gymnopedie)
+(isa ErikSatie Musician)
+(TitleOfSong "Gymnopedie" Gymnopedie)
 (TempoOfSong 95 Gymnopedie)
 (EnergyOfSong lowL Gymnopedie)
 (BeatOfSong mediumL Gymnopedie)
 (PitchOfSong mediumL Gymnopedie)
 (MeterOfSong "3/4" Gymnopedie)
 
-(isa Tejuromadremia Song-CW)
-(composerOfMusicalCW OrquestaT�picaOsvaldoFresedo Tejuromadremia)
-(TempoOfSong 125 Tejuromadremia)
-(EnergyOfSong lowL Tejuromadremia)
-(BeatOfSong mediumL Tejuromadremia)
-(PitchOfSong highL Tejuromadremia)
-(MeterOfSong "4/4" Tejuromadremia)
-(StyleOfSong latin Tejuromadremia)
-
 (isa YouDontKnowNothingAboutLove Song-CW)
 (composerOfMusicalCW RyanShaw YouDontKnowNothingAboutLove)
+(isa RyanShaw Musician)
+(TitleOfSong "You Dont Know Nothing About Love" YouDontKnowNothingAboutLove)
 (TempoOfSong 80 YouDontKnowNothingAboutLove)
 (EnergyOfSong mediumL YouDontKnowNothingAboutLove)
 (BeatOfSong mediumL YouDontKnowNothingAboutLove)
@@ -27,23 +22,18 @@
 
 (isa NocheDeEstrellas-tango Song-CW)
 (composerOfMusicalCW TheStringsOfParis NocheDeEstrellas-tango)
+(isa TheStringsOfParis Musician)
+(TitleOfSong "Noche De Estrellas - tango" NocheDeEstrellas-tango)
 (TempoOfSong 118 NocheDeEstrellas-tango)
 (EnergyOfSong lowL NocheDeEstrellas-tango)
 (BeatOfSong mediumL NocheDeEstrellas-tango)
 (PitchOfSong highL NocheDeEstrellas-tango)
 (MeterOfSong "4/4" NocheDeEstrellas-tango)
 
-(isa TangoPizzicato Song-CW)
-(composerOfMusicalCW VictorFedor�&HisOrchestra TangoPizzicato)
-(TempoOfSong 124 TangoPizzicato)
-(EnergyOfSong mediumL TangoPizzicato)
-(BeatOfSong mediumL TangoPizzicato)
-(PitchOfSong highL TangoPizzicato)
-(MeterOfSong "4/4" TangoPizzicato)
-
-
 (isa LetThereBeLove-slowfoxtrot Song-CW)
 (composerOfMusicalCW TheStringsOfParis LetThereBeLove-slowfoxtrot)
+(isa TheStringsOfParis Musician)
+(TitleOfSong "Let There Be Love - slow foxtrot" LetThereBeLove-slowfoxtrot)
 (TempoOfSong 116 LetThereBeLove-slowfoxtrot)
 (EnergyOfSong lowL LetThereBeLove-slowfoxtrot)
 (BeatOfSong highL LetThereBeLove-slowfoxtrot)
@@ -51,7 +41,9 @@
 (MeterOfSong "4/4" LetThereBeLove-slowfoxtrot)
 
 (isa LeanBaby Song-CW)
-(composerOfMusicalCW Swingin'Fireballs LeanBaby)
+(composerOfMusicalCW SwinginFireballs LeanBaby)
+(isa SwinginFireballs Musician)
+(TitleOfSong "Lean Baby" LeanBaby)
 (TempoOfSong 123 LeanBaby)
 (EnergyOfSong lowL LeanBaby)
 (BeatOfSong mediumL LeanBaby)
@@ -60,6 +52,8 @@
 
 (isa FeelingGood Song-CW)
 (composerOfMusicalCW Ms.LaurynHill FeelingGood)
+(isa Ms.LaurynHill Musician)
+(TitleOfSong "Feeling Good" FeelingGood)
 (TempoOfSong 117 FeelingGood)
 (EnergyOfSong highL FeelingGood)
 (BeatOfSong mediumL FeelingGood)
@@ -68,6 +62,8 @@
 
 (isa UnderTheBoardwalk Song-CW)
 (composerOfMusicalCW RhythmsdelMundo&TheRollingStones UnderTheBoardwalk)
+(isa RhythmsdelMundo&TheRollingStones Musician)
+(TitleOfSong "Under The Boardwalk" UnderTheBoardwalk)
 (TempoOfSong 120 UnderTheBoardwalk)
 (EnergyOfSong highL UnderTheBoardwalk)
 (BeatOfSong highL UnderTheBoardwalk)
@@ -76,6 +72,8 @@
 
 (isa SiLosRumberosMeLlaman Song-CW)
 (composerOfMusicalCW OrquestaRevolucion70 SiLosRumberosMeLlaman)
+(isa OrquestaRevolucion70 Musician)
+(TitleOfSong "Si Los Rumberos Me Llaman" SiLosRumberosMeLlaman)
 (TempoOfSong 154 SiLosRumberosMeLlaman)
 (EnergyOfSong highL SiLosRumberosMeLlaman)
 (BeatOfSong mediumL SiLosRumberosMeLlaman)
@@ -83,9 +81,10 @@
 (MeterOfSong "4/4" SiLosRumberosMeLlaman)
 (StyleOfSong latin SiLosRumberosMeLlaman)
 
-
 (isa JustFeelBetter Song-CW)
 (composerOfMusicalCW Santana&StevenTyler JustFeelBetter)
+(isa Santana&StevenTyler Musician)
+(TitleOfSong "Just Feel Better" JustFeelBetter)
 (TempoOfSong 160 JustFeelBetter)
 (EnergyOfSong highL JustFeelBetter)
 (BeatOfSong mediumL JustFeelBetter)
@@ -94,6 +93,8 @@
 
 (isa ImIntoSomethingGood Song-CW)
 (composerOfMusicalCW TheBirdandtheBee ImIntoSomethingGood)
+(isa TheBirdandtheBee Musician)
+(TitleOfSong "Im Into Something Good" ImIntoSomethingGood)
 (TempoOfSong 123 ImIntoSomethingGood)
 (EnergyOfSong mediumL ImIntoSomethingGood)
 (BeatOfSong highL ImIntoSomethingGood)
@@ -102,6 +103,8 @@
 
 (isa DontCha Song-CW)
 (composerOfMusicalCW TheBaseballs DontCha)
+(isa TheBaseballs Musician)
+(TitleOfSong "Dont Cha" DontCha)
 (TempoOfSong 120 DontCha)
 (EnergyOfSong highL DontCha)
 (BeatOfSong mediumL DontCha)
@@ -110,6 +113,8 @@
 
 (isa ISingtheBlues Song-CW)
 (composerOfMusicalCW EttaJames ISingtheBlues)
+(isa EttaJames Musician)
+(TitleOfSong "I Sing the Blues" ISingtheBlues)
 (TempoOfSong 96 ISingtheBlues)
 (EnergyOfSong mediumL ISingtheBlues)
 (BeatOfSong highL ISingtheBlues)
@@ -117,7 +122,9 @@
 (MeterOfSong "4/4" ISingtheBlues)
 
 (isa ASleepWithNoDreaming Song-CW)
-(composerOfMusicalCW k.d.lang&theSissBoomBang ASleepWithNoDreaming)
+(composerOfMusicalCW kdlangandtheSissBoomBang ASleepWithNoDreaming)
+(isa kdlangandtheSissBoomBang Musician)
+(TitleOfSong "A Sleep With No Dreaming" ASleepWithNoDreaming)
 (TempoOfSong 176 ASleepWithNoDreaming)
 (EnergyOfSong mediumL ASleepWithNoDreaming)
 (BeatOfSong mediumL ASleepWithNoDreaming)
@@ -126,6 +133,8 @@
 
 (isa Be-bopBaby-SingleVersion Song-CW)
 (composerOfMusicalCW RickyNelson Be-bopBaby-SingleVersion)
+(isa RickyNelson Musician)
+(TitleOfSong "Be-bop Baby (Single Version)" Be-bopBaby-SingleVersion)
 (TempoOfSong 184 Be-bopBaby-SingleVersion)
 (EnergyOfSong lowL Be-bopBaby-SingleVersion)
 (BeatOfSong mediumL Be-bopBaby-SingleVersion)
@@ -134,6 +143,8 @@
 
 (isa AllOfMe Song-CW)
 (composerOfMusicalCW DeborahCox AllOfMe)
+(isa DeborahCox Musician)
+(TitleOfSong "All Of Me" AllOfMe)
 (TempoOfSong 114 AllOfMe)
 (EnergyOfSong mediumL AllOfMe)
 (BeatOfSong mediumL AllOfMe)
@@ -142,6 +153,8 @@
 
 (isa EyesOpen Song-CW)
 (composerOfMusicalCW TaylorSwift EyesOpen)
+(isa TaylorSwift Musician)
+(TitleOfSong "Eyes Open" EyesOpen)
 (TempoOfSong 137 EyesOpen)
 (EnergyOfSong highL EyesOpen)
 (BeatOfSong mediumL EyesOpen)
@@ -150,11 +163,10 @@
 
 (isa GipsyTango Song-CW)
 (composerOfMusicalCW WernerTauber GipsyTango)
+(isa WernerTauber Musician)
+(TitleOfSong "Gipsy Tango" GipsyTango)
 (TempoOfSong 132 GipsyTango)
 (EnergyOfSong highL GipsyTango)
 (BeatOfSong mediumL GipsyTango)
 (PitchOfSong highL GipsyTango)
 (MeterOfSong "4/4" GipsyTango)
-
-
-
