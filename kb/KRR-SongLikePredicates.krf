@@ -1,0 +1,178 @@
+(in-microtheory cs371-Music-Suggestion)
+
+(isa userLikes Predicate)
+(arity userLikes 1)
+
+(<== (userLikes slowSongs)
+     (userLikes ?song)
+     (slowSong ?song))
+
+(<== (userLikes fastSongs)
+     (userLikes ?song)
+     (fastSong ?song))
+
+(<== (userLikes mediumTempodSongs)
+     (userLikes ?song)
+     (mediumTempodSong ?song))
+
+(<== (userLikes happySongs)
+     (userLikes ?song)
+     (songMood happy ?song))
+
+(<== (userLikes exuberantSongs)
+     (userLikes ?song)
+     (songMood exuberant ?song))
+
+(<== (userLikes energeticSongs)
+     (userLikes ?song)
+     (songMood energetic ?song))
+
+(<== (userLikes franticSongs)
+     (userLikes ?song)
+     (songMood frantic ?song))
+
+(<== (userLikes anxiousSongs)
+     (userLikes ?song)
+     (songMood anxious ?song))
+
+(<== (userLikes depressedSongs)
+     (userLikes ?song)
+     (songMood depressed ?song))
+
+(<== (userLikes calmSongs)
+     (userLikes ?song)
+     (songMood calm ?song))
+
+(<== (userLikes contentSongs)
+     (userLikes ?song)
+     (songMood content ?song))
+
+(<== (userLikes tangoSongs)
+     (userLikes ?song)
+     (danceStyle tango ?song))
+
+(<== (userLikes balboaSongs)
+     (userLikes ?song)
+     (danceStyle balboa ?song))
+
+(<== (userLikes lindyHopSongs)
+     (userLikes ?song)
+     (danceStyle lindyHop ?song))
+
+(<== (userLikes chaChaSongs)
+     (userLikes ?song)
+     (danceStyle chaCha ?song))
+
+(<== (userLikes salsaSongs)
+     (userLikes ?song)
+     (danceStyle salsa ?song))
+
+(<== (userLikes bluesSongs)
+     (userLikes ?song)
+     (danceStyle blues ?song))
+
+(<== (userLikes waltzSongs)
+     (userLikes ?song)
+     (danceStyle waltz ?song))
+
+
+
+
+
+
+
+
+
+(isa userMayLike Predicate)
+(arity userMayLike 1)
+(arg1Isa userMayLike Song-CW)
+
+(<== (userMayLike ?song)
+     (userLikes slowSongs)
+     (slowSong ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes fastSongs)
+     (fastSong ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes mediumTempodSongs)
+     (mediumTempodSong ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes happySongs)
+     (songMood happy ?song)
+      (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes exuberantSongs)
+     (songMood exuberant ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes energeticSongs)
+     (songMood energetic ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes franticSongs)
+     (songMood frantic ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes anxiousSongs)
+     (songMood anxious ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes depressedSongs)
+     (songMood depressed ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes calmSongs)
+     (songMood calm ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes contentSongs)
+     (songMood content ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes tangoSongs)
+     (danceStyle tango ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes balboaSongs)
+     (danceStyle balboa ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes lindyHopSongs)
+     (danceStyle lindyHop ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes chaChaSongs)
+     (danceStyle chaCha ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes salsaSongs)
+     (danceStyle salsa ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes bluesSongs)
+     (danceStyle blues ?song)
+     (uninferredSentence (userLikes ?song)))
+
+(<== (userMayLike ?song)
+     (userLikes waltzSongs)
+     (danceStyle waltz ?song)
+     (uninferredSentence (userLikes ?song)))

@@ -156,12 +156,29 @@
      (lessThanOrEqualTo ?tempo 100))
 
 
-;; simple predicate for getting songs slower than a tempo
+;; simple predicate for getting slower songs
 (isa slowSong Predicate)
-(arity slowSong 2)
+(arity slowSong 1)
 (arg1Isa slowSong Song-CW)
-(arg2Isa slowSong Integer)
 
-(<== (slowSong ?song ?st)
+(<== (slowSong ?song)
      (TempoOfSong ?tempo ?song)
-     (lessThanOrEqualTo ?tempo ?st))
+     (lessThanOrEqualTo ?tempo 100))
+
+(isa fastSong Predicate)
+(arity fastSong 1)
+(arg1Isa fastSong Song-CW)
+
+(<== (fastSong ?song)
+     (TempoOfSong ?tempo ?song)
+     (greaterThanOrEqualTo ?tempo 120))
+
+(isa mediumTempodSong Predicate)
+(arity mediumTempodSong 1)
+(arg1Isa mediumTempodSong Song-CW)
+
+(<== (mediumTempodSong ?song)
+     (TempoOfSong ?tempo ?song)
+     (greaterThan ?tempo 100)
+     (lessThan ?tempo 120))
+

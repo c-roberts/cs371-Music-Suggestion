@@ -66,3 +66,16 @@
 (arg1Isa CanBeDancedTo DancingTypeByStyle)
 (arg2Isa CanBeDancedTo Song-CW)
 (comment CanBeDancedTo "The dances that can be danced to a song")
+
+
+
+
+(isa songRecommended Predicate)
+(arity songRecommended 1)
+(arg1Isa songRecommended Song-CW)
+
+(<== (songRecommended ?song)
+     (userMayLike ?song)
+     (uninferredSentence (userMayDisLike ?song))
+     (uninferredSentence (userDisLikes ?song)))
+
