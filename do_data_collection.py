@@ -18,12 +18,12 @@ def translatePitch(v):
         return "highL"
 
 ## run scraper -> dictionary
-#from Data_Collection.collect import getSongs
-##song_list = getSongs()
+from Data_Collection.collect import getSongs
+song_list = getSongs()
 
 # open song list from json
-with open(sys.path[0] + '/Data_Collection/data.json') as fj:
-    song_list = json.load(fj)
+#with open(sys.path[0] + '/Data_Collection/data.json') as fj:
+#    song_list = json.load(fj)
 
 print("Loaded data from json file.")
 
