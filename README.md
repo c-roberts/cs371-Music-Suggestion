@@ -33,7 +33,8 @@ In order to work with companions, the fickle beast that it is, we recommend trim
 songs with non ascii data [^1] or with parens in any of the string fields and splitting the songs into multiple files
 so that each file contains no more than 400 lines.
 
-Next, all of the `*Predicate.krf` files should be loaded into companions along with the trimmed song files.
+Next, all of the `*Predicate.krf` files from the `kb` directory should be loaded into companions along with the trimmed
+song files.
 
 Recommendations may be requested of the system by querying `(songRecommended ?s)` in the `cs371-Music-Suggestion`
 micro-theory. Initially, no recommendations will be given. Recommendations are dependent on storing facts of the form
