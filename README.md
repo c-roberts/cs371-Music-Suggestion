@@ -15,9 +15,9 @@ usage section.
 
 ### Data Collection
 The Data_Collection module in this repository provides the `getSongs()` function
-(`from Data_Collection.collect import getSongs` in a python file in the repo root) which can scrape and analyze new
-data from Music4Dance, and then cache this data for later use. This function is used by `do_data_collection.py` to
-generate the `krf` song file.
+(usable in a python file in the repo root with `from Data_Collection.collect import getSongs`) which can scrape
+and analyze new data from Music4Dance, and then cache this data for later use. This function is used by
+`do_data_collection.py` to generate the `krf` song file.
 
 Running `do_data_collection.py` requires a few dependences managed by [`pipenv`](https://pipenv.pypa.io/en/latest/).
 First install `python3` and `pipenv`. Then run `pipenv install` in the repo root. This will configure the required
