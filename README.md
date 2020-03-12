@@ -40,11 +40,25 @@ song files.
 Recommendations may be requested of the system by querying `(songRecommended ?s)` in the `cs371-Music-Suggestion`
 micro-theory. Initially, no recommendations will be given. Recommendations are dependent on storing facts of the form
 `(userLikes ?song)` and `(userDisLikes ?song)` in the `cs371-Music-Suggestion` micro-theory where `?song` is any
-`song-CW` in the song files. Unfortunately, previous song recommendations are not updated by adding extra information.
+`Song-CW` in the song files. Unfortunately, previous song recommendations are not updated by adding extra information.
 Instead the micro-theory must be cleared and reloaded, then all `userLikes` and `userDisLikes` stored, and then
 `(songRecommended ?s)` called anew.
 
 ## Ontology
+We represented songs using Cyc-style statements. We defined predicates to give songs attributes such as tempo, artist, and energy level. Energy, mood, beat, and pitch are first represented as a scalar value ranging 0.0 to 1.0. This is mapped to a level, low (0.0-0.33), medium (0.34-0.66), or high (0.67-1.0). Meter of a song is represented as a string (i.e. "2/2 or "3/4"). 
+
+```lisp
+(isa songInstance Song-CW)
+(composerOfMusicalCW artistInstance songInstance)
+(isa artistInstance Musician)
+(TitleOfSong "Song Instance" songInstance)
+(TempoOfSong positiveInteger songInstance)
+(EnergyOfSong level songInstance)
+(BeatOfSong level songInstance)
+(PitchOfSong level songInstance)
+(MeterOfSong string songInstance)
+```
+
 
 ## Reasoning
 
