@@ -59,8 +59,22 @@ We represented songs using Cyc-style statements. We defined predicates to give s
 (MeterOfSong string songInstance)
 ```
 
-
 ## Reasoning
+There are three reasoning goals in this project: mood, dance styles, and recommendation. First we reason on the pitch,
+beat, and energy to conclude the mood. The horn clauses for this can be found in `kb/KRR-SongMoodPredicates.krf`. Dance
+style clauses are also in `kb/KRR-SongMoodPredicates.krf`. Here we use tempo and meter to conclude all of the possible
+styles that a song could reasonably be danced to. Finally, we use a multistage set of horn clauses from
+`kb/KRR-SongLikePredicates.krf`, `kb/KRR-SongDisLikePredicates.krf`, and `kb/KRR-Predicates.krf` to generate
+recommendations.
 
+First preferences entered through `(userLikes ?song)` facts entail `(userLikes ?attribute)` for the `?attribute`s
+of the `?song` (and similarly for `(userDisLikes ...)`), focusing on mood, dance styles, and energy.
+
+These likes then entail potential recommendations for all the songs which have the liked `?attributes`, represented with
+`(userMayLike ?song)` facts. Similarly, dislikes are propogated to other songs as `(userDisMayLike ?song)`. These
+potential recommendations are then collected by the `(songRecommended ?s)` predicate, which selects songs sharing
+attributes with liked songs, and sharing no attributes with disliked songs.
+
+## Footnotes
 [^1]: We aknowledge the unfortunate white-washing that is likely to result... With more time and excess sanity, a more
 sensible data sanitization procedure could definitely be devised.
