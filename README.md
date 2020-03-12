@@ -9,8 +9,9 @@ dance style, and energy. We compute the mood by implementing a classification sy
 ## Using
 This repository includes trimmed song data scraped from [Music4Dance.net](https://www.music4dance.net/),
 analyzed for average pitch locally with python's `librosa`, the `sox` utility for Linux, and Unix's `file` command,
-and then parsed into `krf` files. If you would like to collect more data yourself however, follow the instructions
-below in Data Collection. Otherwise, skip to the Companions usage section.
+and then parsed into `krf` files. If you would like to collect more data yourself however, ensure that `sox` and `file`
+are installed on your system and follow the instructions below in Data Collection. Otherwise, skip to the Companions
+usage section.
 
 ### Data Collection
 The Data_Collection module in this repository provides the `getSongs()` function
